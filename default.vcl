@@ -5,10 +5,83 @@
 # Default backend definition.  Set this to point to your content
 # server.
 # 
-backend default {
-    .host = "127.0.0.1";
-    .port = "8080";
+##backend default {
+##    .host = "127.0.0.1";
+##    .port = "8080";
+##}
+
+
+probe healthcheck {
+	.url = "/v2.0";
+	.interval = 20s;
+	.timeout = 1.0 s;
+	.window = 8;
+	.threshold = 3;
+	.initial = 3;
 }
+
+backend k5000 {
+ 	.host = "172.16.105.109";
+	.host = "172.16.108.75";
+	.host = "172.16.107.101";
+	.host = "172.16.107.102";
+	.host = "172.16.107.103";
+	.host = "172.16.180.221";
+	.host = "172.16.106.107";
+	.host = "172.16.108.76";
+	.host = "172.16.107.104";
+	.host = "172.16.167.163";
+	.host = "172.16.167.164 ";
+	.host = "172.16.149.79";
+	.host = "10.32.136.80";
+	.host = "10.32.136.84";
+	.host = "172.16.167.165";
+	.host = "172.16.149.133";
+	.host = "172.16.149.82";
+	.host = "172.16.167.166";
+ 	.port = "5000";
+ 	.connect_timeout = 1s;
+ 	.first_byte_timeout = 5s;
+ 	.between_bytes_timeout = 2s;
+	.probe = healthcheck;
+}
+
+backend k35357 {
+    .host = "172.16.105.109";
+    .host = "172.16.108.75";
+    .host = "172.16.107.101";
+    .host = "172.16.107.102";
+    .host = "172.16.107.103";
+    .host = "172.16.180.221";
+    .host = "172.16.106.107";
+    .host = "172.16.108.76";
+    .host = "172.16.107.104";
+    .host = "172.16.167.163";
+    .host = "172.16.167.164 ";
+    .host = "172.16.149.79";
+    .host = "10.32.136.80";
+    .host = "10.32.136.84";
+    .host = "172.16.167.165";
+    .host = "172.16.149.133";
+    .host = "172.16.149.82";
+    .host = "172.16.167.166";
+    .port = "35357";
+    .connect_timeout = 1s;
+    .first_byte_timeout = 5s;
+    .between_bytes_timeout = 2s;
+	.probe = healthcheck;
+}
+
+director cloudbuildersRR round-robin {
+	{
+		.backend = k5000;
+	}
+	{
+		.backend = k35357;
+	}
+}
+
+
 # 
 # Below is a commented-out copy of the default VCL logic.  If you
 # redefine any of these subroutines, the built-in logic will be
