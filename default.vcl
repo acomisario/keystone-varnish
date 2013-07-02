@@ -72,6 +72,20 @@ backend k35357 {
 	.probe = healthcheck;
 }
 
+acl purge {
+	"localhost";
+	"172.16.144.11";
+}
+
+
+
+
+sub vcl_recv {
+	if (req.request == "DELETE" && req.request == "POST" && req.request == "PUT") {
+		pass;
+	}
+}
+
 
 
 # 
