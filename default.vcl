@@ -72,14 +72,6 @@ backend k35357 {
 	.probe = healthcheck;
 }
 
-director cloudbuildersRR round-robin {
-	{
-		.backend = k5000;
-	}
-	{
-		.backend = k35357;
-	}
-}
 
 
 # 
