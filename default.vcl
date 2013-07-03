@@ -1,12 +1,12 @@
 #
-# CLOUDBUILDERS - KEYSTONE VARNISH v1 CVL
+# CLOUDBUILDERS - KEYSTONE VARNISH v1 VCL
 # 
 
 
 probe healthcheck {
 	.url = "/v2.0";
 	.interval = 20s;
-	.timeout = 1.0 s;
+	.timeout = 1.0s;
 	.window = 8;
 	.threshold = 3;
 	.initial = 3;
@@ -435,16 +435,7 @@ sub vcl_deliver {
 }
 
 sub vcl_hit {
-	if (req.http.port == "5000") {
-        set req.backend = k5000;
-    }
-	else {
-        set req.backend = k35357;
-    }
-	if (req.request == "PURGE") {
-		purge;
-		error 200 "Purged.";
-	}
+	return(deliver);
 }
 
 sub vcl_miss {
