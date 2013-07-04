@@ -17,8 +17,6 @@ backend essexkeystone50001 {
 	.host = "172.16.105.109";
 	.port = "5000";
 	.connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
     .probe = healthcheck;
 }
 
@@ -27,8 +25,6 @@ backend essexkeystone50002 {
     .host = "172.16.108.75";
     .port = "5000";
 	.connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
     .probe = healthcheck;
 }
 
@@ -36,8 +32,8 @@ backend essexkeystone50003 {
     .host = "172.16.107.101";
 	.port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -45,8 +41,8 @@ backend essexkeystone50004 {
     .host = "172.16.107.102";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -54,8 +50,8 @@ backend essexkeystone50005 {
     .host = "172.16.107.103";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -63,8 +59,8 @@ backend essexkeystone50006 {
     .host = "172.16.180.221";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -72,8 +68,8 @@ backend essexkeystone50007 {
     .host = "172.16.106.107";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -82,8 +78,8 @@ backend essexkeystone50008 {
     .host = "172.16.108.76";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -91,8 +87,8 @@ backend essexkeystone50009 {
     .host = "172.16.107.104";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -100,8 +96,8 @@ backend essexkeystone500010 {
     .host = "172.16.167.163";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -109,8 +105,8 @@ backend essexkeystone500011 {
     .host = "172.16.167.164";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -118,8 +114,8 @@ backend essexkeystone500012 {
     .host = "172.16.149.79";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -127,8 +123,8 @@ backend essexkeystone500013 {
     .host = "10.32.136.80";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -136,8 +132,8 @@ backend essexkeystone500014 {
     .host = "10.32.136.84";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -145,8 +141,8 @@ backend essexkeystone500015 {
     .host = "172.16.167.165";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -154,8 +150,8 @@ backend essexkeystone500016 {
     .host = "172.16.149.133";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -163,8 +159,8 @@ backend essexkeystone500017 {
     .host = "172.16.149.82";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -172,8 +168,8 @@ backend essexkeystone500018 {
     .host = "172.16.167.166";
     .port = "5000";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -181,8 +177,8 @@ backend essexkeystone353571 {
     .host = "172.16.105.109";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -191,8 +187,8 @@ backend essexkeystone353572 {
     .host = "172.16.108.75";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -200,8 +196,8 @@ backend essexkeystone353573 {
     .host = "172.16.107.101";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -209,8 +205,8 @@ backend essexkeystone353574 {
     .host = "172.16.107.102";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -218,8 +214,8 @@ backend essexkeystone353575 {
     .host = "172.16.107.103";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -227,8 +223,8 @@ backend essexkeystone353576 {
     .host = "172.16.180.221";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -236,8 +232,8 @@ backend essexkeystone353577 {
     .host = "172.16.106.107";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -245,8 +241,8 @@ backend essexkeystone353578 {
     .host = "172.16.108.76";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -254,8 +250,8 @@ backend essexkeystone353579 {
     .host = "172.16.107.104";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -263,8 +259,8 @@ backend essexkeystone3535710 {
     .host = "172.16.167.163";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -272,8 +268,8 @@ backend essexkeystone3535711 {
     .host = "172.16.167.164";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -281,8 +277,8 @@ backend essexkeystone3535712 {
     .host = "172.16.149.79";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -290,8 +286,8 @@ backend essexkeystone3535713 {
     .host = "10.32.136.80";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -299,8 +295,8 @@ backend essexkeystone3535714 {
     .host = "10.32.136.84";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -308,8 +304,8 @@ backend essexkeystone3535715 {
     .host = "172.16.167.165";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -317,8 +313,8 @@ backend essexkeystone3535716 {
     .host = "172.16.149.133";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -326,8 +322,8 @@ backend essexkeystone3535717 {
     .host = "172.16.149.82";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
@@ -335,8 +331,8 @@ backend essexkeystone3535718 {
     .host = "172.16.167.166";
     .port = "35357";
     .connect_timeout = 1s;
-    .first_byte_timeout = 5s;
-    .between_bytes_timeout = 2s;
+    
+    
     .probe = healthcheck;
 }
 
