@@ -455,8 +455,10 @@ sub vcl_fetch {
 	if(beresp.status == 503) {
 		error 503;
 	}
-	set beresp.http.cache-control = "max-age=900";
-	set beresp.ttl = 1w;
+	if(beresp.status == 200 && (req.request == "GET" || req.request =="HEAD")) {
+		set beresp.http.cache-control = "max-age=900";
+		set beresp.ttl = 1w;
+	}
 }
 
 sub vcl_error {
