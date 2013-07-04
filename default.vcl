@@ -411,7 +411,8 @@ sub vcl_recv {
 	else {
 		set req.backend = k35357;
 	}
-	if (req.request == "DELETE" || req.request == "POST" || req.request == "PUT") {
+	/* we dont wanna cache other than GETS, since HEADS are fast enough */
+	if (req.request == "DELETE" || req.request == "POST" || req.request == "PUT" || req.request == "HEAD") {
 		return(pass);
 	}
 	else {
@@ -447,7 +448,7 @@ sub vcl_fetch {
 	if(beresp.status == 503) {
 		error 503;
 	}
-	if(beresp.status == 200 && (req.request == "GET" || req.request =="HEAD")) {
+	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
 		set beresp.http.cache-control = "max-age=900";
 		set beresp.ttl = 1w;
 	}
