@@ -415,7 +415,7 @@ sub vcl_recv {
 	else {
 		set req.backend = k35357;
 	}
-	if (req.request == "DELETE" && req.request == "POST" && req.request == "PUT") {
+	if (req.request == "DELETE" || req.request == "POST" || req.request == "PUT") {
 		return(pass);
 	}
 	else {
@@ -432,10 +432,6 @@ sub vcl_recv {
 sub vcl_deliver {
 	set resp.http.X-MLVarnish-Server = ""+ server.hostname;
 	set resp.http.X-Request-Start = req.http.X-Request-Start;
-}
-
-sub vcl_hit {
-	return(deliver);
 }
 
 sub vcl_miss {
