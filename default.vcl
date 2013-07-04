@@ -4,7 +4,7 @@
 
 
 probe healthcheck {
-	.url = "/v2.0";
+	.url = "/v2.0/";
 	.interval = 20s;
 	.timeout = 1.0s;
 	.window = 8;
