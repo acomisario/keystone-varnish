@@ -449,7 +449,7 @@ sub vcl_fetch {
 		error 503;
 	}
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
-		set beresp.http.cache-control = "max-age=900";
+		set beresp.http.cache-control = "max-age=43200";
 		set beresp.ttl = 1w;
 	}
 }
