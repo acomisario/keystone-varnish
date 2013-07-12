@@ -13,84 +13,6 @@ probe healthcheck {
 }
 
 
-backend essexkeystone50001 {
-	.host = "172.16.105.109";
-	.port = "5000";
-	.connect_timeout = 1s;
-    .probe = healthcheck;
-}
-
-
-backend essexkeystone50002 {
-    .host = "172.16.108.75";
-    .port = "5000";
-	.connect_timeout = 1s;
-    .probe = healthcheck;
-}
-
-backend essexkeystone50003 {
-    .host = "172.16.107.101";
-	.port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone50004 {
-    .host = "172.16.107.102";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone50005 {
-    .host = "172.16.107.103";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone50006 {
-    .host = "172.16.180.221";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone50007 {
-    .host = "172.16.106.107";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-
-backend essexkeystone50008 {
-    .host = "172.16.108.76";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone50009 {
-    .host = "172.16.107.104";
-    .port = "5000";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
 
 backend essexkeystone500010 {
     .host = "172.16.167.163";
@@ -173,87 +95,7 @@ backend essexkeystone500018 {
     .probe = healthcheck;
 }
 
-backend essexkeystone353571 {
-    .host = "172.16.105.109";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
 
-
-backend essexkeystone353572 {
-    .host = "172.16.108.75";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353573 {
-    .host = "172.16.107.101";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353574 {
-    .host = "172.16.107.102";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353575 {
-    .host = "172.16.107.103";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353576 {
-    .host = "172.16.180.221";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353577 {
-    .host = "172.16.106.107";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353578 {
-    .host = "172.16.108.76";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
-
-backend essexkeystone353579 {
-    .host = "172.16.107.104";
-    .port = "35357";
-    .connect_timeout = 1s;
-    
-    
-    .probe = healthcheck;
-}
 
 backend essexkeystone3535710 {
     .host = "172.16.167.163";
@@ -339,15 +181,6 @@ backend essexkeystone3535718 {
 
 
 director k5000 round-robin {
-	{ .backend = essexkeystone50001; }
-	{ .backend = essexkeystone50002; }
-	{ .backend = essexkeystone50003; }
-	{ .backend = essexkeystone50004; }
-	{ .backend = essexkeystone50005; }
-	{ .backend = essexkeystone50006; }
-	{ .backend = essexkeystone50007; }
-	{ .backend = essexkeystone50008; }
-	{ .backend = essexkeystone50009; }
 	{ .backend = essexkeystone500010; }
 	{ .backend = essexkeystone500011; }
 	{ .backend = essexkeystone500012; }
@@ -360,15 +193,6 @@ director k5000 round-robin {
 }
 
 director k35357 round-robin {
-    { .backend = essexkeystone353571; }
-    { .backend = essexkeystone353572; }
-    { .backend = essexkeystone353573; }
-    { .backend = essexkeystone353574; }
-    { .backend = essexkeystone353575; }
-    { .backend = essexkeystone353576; }
-    { .backend = essexkeystone353577; }
-    { .backend = essexkeystone353578; }
-    { .backend = essexkeystone353579; }
     { .backend = essexkeystone3535710; }
     { .backend = essexkeystone3535711; }
     { .backend = essexkeystone3535712; }
