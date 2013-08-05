@@ -228,10 +228,6 @@ sub vcl_recv {
 		sprintf(start, "%lu%06lu", detail_time.tv_sec, detail_time.tv_usec);
 		VRT_SetHdr(sp, HDR_REQ, "\020X-Request-Start:", start, vrt_magic_string_end);
 	}C	
-	
-	if (req.request == "GET" && req.url !~ "/v2.0/tokens/.*") {
-		return(pass);
-    }	
 
 	if (req.http.port == "5000") {
 		set req.backend = k5000;
@@ -277,7 +273,7 @@ sub vcl_fetch {
 		error 503;
 	}
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
-		set beresp.http.cache-control = "max-age=43200";
+		set beresp.http.cache-control = "max-age=900";
 		set beresp.ttl = 1w;
 	}
 }
