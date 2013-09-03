@@ -258,7 +258,7 @@ sub vcl_deliver {
 }
 
 sub vcl_hit {
-	if (req.method == "PURGE") {
+	if (req.request == "PURGE") {
 		purge;
        	error 200 "Purged.";
 	}
