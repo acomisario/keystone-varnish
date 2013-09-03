@@ -208,6 +208,7 @@ director k35357 round-robin {
 acl purge {
 	"localhost";
 	"172.16.144.11";
+	"172.16.180.212";
 }
 
 C{
@@ -228,6 +229,13 @@ sub vcl_recv {
 		sprintf(start, "%lu%06lu", detail_time.tv_sec, detail_time.tv_usec);
 		VRT_SetHdr(sp, HDR_REQ, "\020X-Request-Start:", start, vrt_magic_string_end);
 	}C	
+	
+	if (req.request == "PURGE") {
+		if (!client.ip ~ purge) {
+			error 405 "Not allowed.";
+		}
+		return (lookup);
+	}
 
 	if (req.http.port == "5000") {
 		set req.backend = k5000;
@@ -242,17 +250,18 @@ sub vcl_recv {
 	else {
 		return(lookup);
 	}
-	if (req.request == "PURGE") {
-		if (!client.ip ~ purge) {
-			error 405 "Not allowed.";
-		}
-		return (lookup);
-	}
 }
 
 sub vcl_deliver {
 	set resp.http.X-MLVarnish-Server = ""+ server.hostname;
 	set resp.http.X-Request-Start = req.http.X-Request-Start;
+}
+
+sub vcl_hit {
+	if (req.method == "PURGE") {
+		purge;
+       	error 200 "Purged.";
+	}
 }
 
 sub vcl_miss {
