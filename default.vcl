@@ -6,7 +6,7 @@
 probe healthcheck {
 	.url = "/v2.0/";
 	.interval = 20s;
-	.timeout = 1.0s;
+	.timeout = 5.0s;
 	.window = 8;
 	.threshold = 3;
 	.initial = 3;
@@ -282,6 +282,12 @@ sub vcl_fetch {
 	if(beresp.status == 503) {
 		error 503;
 	}
+	if(beresp.status == 401) {
+		error 401;
+	}
+	if(beresp.status == 404) {
+		error 404;
+    }
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
 		set beresp.http.cache-control = "max-age=900";
 		set beresp.ttl = 1w;
