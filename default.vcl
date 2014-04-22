@@ -261,7 +261,7 @@ sub vcl_deliver {
 sub vcl_hit {
 	if (req.request == "PURGE") {
 		purge;
-       	error 200 "Purged.";
+	       	error 200 "Purged.";
 	}
 }
 
@@ -284,7 +284,8 @@ sub vcl_fetch {
 	}
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
 		set beresp.http.cache-control = "max-age=900";
-		set beresp.ttl = 1w;
+		set beresp.ttl = 900s;
+		set beresp.grace = 60m;
 	}
 }
 

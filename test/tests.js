@@ -218,5 +218,6 @@ describe("Varnish Tests" ,function(done){
 			should.fail('expected an error!')
 		});
 	});
+
 });
 
