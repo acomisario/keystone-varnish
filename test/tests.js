@@ -105,7 +105,7 @@ describe("Varnish Tests" ,function(done){
 		})
 	});
 
-	it("NO se cachea HEAD", function(done){
+	it("NO se cachea POST", function(done){
 		backend.on ('response', function (response) {
 			response.send(200);
 		});
@@ -255,6 +255,60 @@ describe("Varnish Tests" ,function(done){
 			should.exist(response.headers['x-backend'])
 			response.headers['x-backend'].should.include("essexkeystone35357")
 			done()
+		})
+	});
+	
+	it("Purge", function(done){
+		request({
+			url:"http://localhost:8081/lelelleleele",
+			method:"GET"},
+		function(error, response, body){
+			request({
+				url:"http://localhost:8081/lelelleleele",
+				method:"GET"},
+			function(error, response, body){
+				response.statusCode.should.equal(200)
+				var xvarnish = response.headers['x-varnish'];
+				xvarnish.split(" ").length.should.equal(2);
+				request({
+					url:"http://localhost:8081/lelelleleele",
+					method:"PURGE",
+					followRedirect:false}, 
+				function(error, response, body) {
+					response.statusCode.should.equal(200)
+					should.exist(response.headers['x-varnish'])
+					xvarnish = response.headers['x-varnish'];
+					xvarnish.split(" ").length.should.equal(1);
+					done()
+				})
+			})
+		})
+	});
+	
+	it("Purge distinto host", function(done){
+		request({
+			url:"http://localhost:8081/lelelleleele",
+			method:"GET"},
+		function(error, response, body){
+			request({
+				url:"http://localhost:8081/lelelleleele",
+				method:"GET"},
+			function(error, response, body){
+				response.statusCode.should.equal(200)
+				var xvarnish = response.headers['x-varnish'];
+				xvarnish.split(" ").length.should.equal(2);
+				request({
+					url:"http://127.0.0.1:8081/lelelleleele",
+					method:"PURGE",
+					followRedirect:false}, 
+				function(error, response, body) {
+					response.statusCode.should.equal(200)
+					should.exist(response.headers['x-varnish'])
+					xvarnish = response.headers['x-varnish'];
+					xvarnish.split(" ").length.should.equal(1);
+					done()
+				})
+			})
 		})
 	});
 
