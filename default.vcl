@@ -231,6 +231,11 @@ sub vcl_recv {
 		VRT_SetHdr(sp, HDR_REQ, "\020X-Request-Start:", start, vrt_magic_string_end);
 	}C	
 	
+	if (req.backend.healthy) {
+		set req.grace = 30s;
+	} else {
+		set req.grace = 1h;
+	}
 	if (req.request == "PURGE") {
 		if (!client.ip ~ purge) {
 			error 405 "Not allowed.";
@@ -286,7 +291,7 @@ sub vcl_fetch {
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
 		set beresp.http.cache-control = "max-age=900";
 		set beresp.ttl = 900s;
-		set beresp.grace = 60m;
+		set beresp.grace = 1h;
 	}
 	set req.http.X-Backend = beresp.backend.name;
 }
