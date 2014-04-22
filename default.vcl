@@ -231,6 +231,11 @@ sub vcl_recv {
 		VRT_SetHdr(sp, HDR_REQ, "\020X-Request-Start:", start, vrt_magic_string_end);
 	}C	
 	
+	if (req.backend.healthy) {
+		set req.grace = 30s;
+	} else {
+		set req.grace = 1h;
+	}
 	if (req.request == "PURGE") {
 		if (!client.ip ~ purge) {
 			error 405 "Not allowed.";
@@ -256,12 +261,13 @@ sub vcl_recv {
 sub vcl_deliver {
 	set resp.http.X-MLVarnish-Server = ""+ server.hostname;
 	set resp.http.X-Request-Start = req.http.X-Request-Start;
+	set resp.http.X-Backend = req.http.X-Backend;
 }
 
 sub vcl_hit {
 	if (req.request == "PURGE") {
 		purge;
-       	error 200 "Purged.";
+	       	error 200 "Purged.";
 	}
 }
 
@@ -290,8 +296,10 @@ sub vcl_fetch {
     }
 	if(beresp.status == 200 && req.url !~ "/v2.0/tokens/.*") {
 		set beresp.http.cache-control = "max-age=900";
-		set beresp.ttl = 1w;
+		set beresp.ttl = 900s;
+		set beresp.grace = 1h;
 	}
+	set req.http.X-Backend = beresp.backend.name;
 }
 
 sub vcl_error {
@@ -299,6 +307,11 @@ sub vcl_error {
 	if (obj.status == 503 && req.restarts < 1) {
 		return(restart);
 	}
+}
+
+sub vcl_hash {
+	hash_data(req.url);
+	return (hash);
 }
 
 

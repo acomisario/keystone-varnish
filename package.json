@@ -1,0 +1,23 @@
+{
+  "author": "Matias Rege <matias.rege@mercadolibre.com>",
+  "name": "Test-Varnish",
+  "description": "Test Varnish",
+  "version": "0.0.1",
+  "dependencies": {
+        "request" : "2.21.x",
+        "node-logging" : "0.1.x",
+	"optimist": "0.4.x",
+	"cookies": "0.3.x",
+	"express": "3.2.x",
+	"mocha" : "1.9.x",
+	"connect": "2.7.x",
+	"should" : "1.2.x",
+	"lazy" : "1.0.x"
+	},
+  "devDependencies": {
+	},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
