@@ -7,9 +7,9 @@ test:
 	nvm use $(NODEJS_VERSION) && ./run_tests.sh
 
 install: base nvm varnish
-	echo "Instalacion exitosa!"
 	nvm install $(NODEJS_VERSION)
 	nvm use $(NODEJS_VERSION) && npm install
+	echo "Instalacion exitosa!"
 	
 nvm:
 	curl https://raw.github.com/creationix/nvm/master/install.sh | sh
