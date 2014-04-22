@@ -256,6 +256,7 @@ sub vcl_recv {
 sub vcl_deliver {
 	set resp.http.X-MLVarnish-Server = ""+ server.hostname;
 	set resp.http.X-Request-Start = req.http.X-Request-Start;
+	set resp.http.X-Backend = req.http.X-Backend;
 }
 
 sub vcl_hit {
@@ -287,6 +288,7 @@ sub vcl_fetch {
 		set beresp.ttl = 900s;
 		set beresp.grace = 60m;
 	}
+	set req.http.X-Backend = beresp.backend.name;
 }
 
 sub vcl_error {

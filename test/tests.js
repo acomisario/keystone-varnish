@@ -243,6 +243,20 @@ describe("Varnish Tests" ,function(done){
 			})
 		})
 	});
+	
+	
+	it("GET port !=5000 a backend k35357", function(done){
+		request({
+			url:"http://localhost:8081/lalala/AP",
+			method:"GET",
+			jar: false,
+		}, function(error, response, body){
+			response.statusCode.should.equal(200)
+			should.exist(response.headers['x-backend'])
+			response.headers['x-backend'].should.include("essexkeystone35357")
+			done()
+		})
+	});
 
 });
 
