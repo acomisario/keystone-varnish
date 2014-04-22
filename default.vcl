@@ -296,4 +296,9 @@ sub vcl_error {
 	}
 }
 
+sub vcl_hash {
+	hash_data(req.url);
+	return (hash);
+}
+
 

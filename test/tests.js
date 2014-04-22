@@ -218,6 +218,31 @@ describe("Varnish Tests" ,function(done){
 			should.fail('expected an error!')
 		});
 	});
+	
+	it("Cache de objeto sin tener en cuenta el domain", function(done){
+		request({
+			url:"http://localhost:8081/lalalalalala",
+			method:"GET"},
+		function(error, response, body){
+			request({
+				url:"http://localhost:8081/lalalalalala",
+				method:"GET"},
+			function(error, response, body){
+				response.statusCode.should.equal(200)
+				var xvarnish = response.headers['x-varnish'];
+				request({
+					url:"http://127.0.0.1:8081/lalalalalala",
+					method:"GET"}, 
+				function(error, response, body) {
+					response.statusCode.should.equal(200)
+					should.exist(response.headers['x-varnish'])
+					should.exist(response.headers['x-varnish'].split(" ")[1])
+					xvarnish.split(" ")[1].should.equal(response.headers['x-varnish'].split(" ")[1]);
+					done()
+				})
+			})
+		})
+	});
 
 });
 
